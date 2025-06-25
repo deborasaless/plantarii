@@ -8,11 +8,13 @@ import {
   DateTime,
   DateText,
   TimeRow,
-  CardsRow,
-  Card,
   TitleGroup,
-  Logo
+  Logo,
+  CardsColumn,
+  CardsContainer,
+  GenericCard
 } from './styles'
+import ReusedWaterCard from './components/reusedWaterCard'
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date())
@@ -63,11 +65,23 @@ const Dashboard: React.FC = () => {
         </DateTime>
       </Header>
 
-      <CardsRow>
-        <Card />
-        <Card />
-        <Card />
-      </CardsRow>
+      <CardsContainer>
+        <CardsColumn width="20%">
+            <ReusedWaterCard value="30 mL"/>
+            <GenericCard/>
+            <GenericCard/>
+            <GenericCard/>
+        </CardsColumn>
+
+        <CardsColumn width="50%">
+            <GenericCard/>
+        </CardsColumn>
+
+        <CardsColumn width="30%">
+            <GenericCard/>
+            <GenericCard/>
+        </CardsColumn>
+      </CardsContainer>
     </Container>
   )
 }

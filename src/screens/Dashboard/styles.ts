@@ -1,9 +1,13 @@
-// src/components/Dashboard/Dashboard.styles.ts
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin: 1.5rem 2rem;
-  padding: 0 1rem;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
 `
 
 /** Header contendo logo, título e data/hora */
@@ -11,7 +15,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  height: 10vh;
 `
 
 /** Grupo logo + título */
@@ -55,15 +59,28 @@ export const TimeRow = styled.div`
   font-weight: 600;
 `
 
-export const CardsRow = styled.div`
+export const CardsContainer = styled.div`
+  flex: 1;
   display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 0.6rem;
+  width: 100%;
+  height: 90vh;
 `
 
-export const Card = styled.div`
+export const CardsColumn = styled.div<{ width?: string }>`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: space-between;
+  height: 100%;
+  width: ${({ width }) => width ?? 'auto'};
+`
+
+export const GenericCard = styled.div`
+  height: 50px;
   flex: 1;
-  height: 150px;
-  background: #333;
+  width: 100%;
+  background: black;
   border-radius: 8px;
 `

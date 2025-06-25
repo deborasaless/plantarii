@@ -7,11 +7,14 @@ import '@fontsource/poppins/700.css'
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
-  /* Reset básico */
+  /* Reset e full-height */
   *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  html, body, #root {
+    height: 100%;
   }
 
   body {
