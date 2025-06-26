@@ -18,12 +18,12 @@ import {
 import Tooltip from '../../../../components/Tooltip'
 import { DefaultTooltipMessages } from '../../../../components/Tooltip/messages'
 
-export interface ReusedWaterCardProps {
+export interface RecoveredWaterCardProps {
   absoluteValue: number
   percentValue: number
 }
 
-const ReusedWaterCard: React.FC<ReusedWaterCardProps> = ({
+const RecoveredWaterCard: React.FC<RecoveredWaterCardProps> = ({
   absoluteValue,
   percentValue,
 }) => {
@@ -35,7 +35,7 @@ const ReusedWaterCard: React.FC<ReusedWaterCardProps> = ({
     <CardContainer>
       <TitleRow>
         <Title>Água recuperada</Title>
-        <Tooltip text={DefaultTooltipMessages.reusedWater}>
+        <Tooltip text={DefaultTooltipMessages.recoveredWater}>
           <InfoIconWrapper>
             <IconInfoCircle size={18} />
           </InfoIconWrapper>
@@ -64,4 +64,4 @@ const ReusedWaterCard: React.FC<ReusedWaterCardProps> = ({
   )
 }
 
-export default ReusedWaterCard
+export default RecoveredWaterCard

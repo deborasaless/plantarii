@@ -13,7 +13,7 @@ import {
   CardsContainer,
   GenericCard
 } from './styles'
-import ReusedWaterCard from './components/reusedWaterCard'
+import RecoveredWaterCard from './components/recoveredWaterCard'
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date())
@@ -66,7 +66,7 @@ const Dashboard: React.FC = () => {
 
       <CardsContainer>
         <CardsColumn width="25%">
-            <ReusedWaterCard absoluteValue={30} percentValue={20}/>
+            <RecoveredWaterCard absoluteValue={30} percentValue={20}/>
             <GenericCard/>
             <GenericCard/>
             <GenericCard/>
