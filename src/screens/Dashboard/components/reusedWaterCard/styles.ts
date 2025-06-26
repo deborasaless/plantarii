@@ -1,65 +1,113 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const CardContainer = styled.div`
-  background:hsl(0, 0.00%, 100.00%);
   border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 1rem;
+  box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.15);
   width: 100%;
-  height: 8rem;
+  height: 22%;
+`
+
+export const TitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
 `
 
 export const Title = styled.h4`
   font-size: 1rem;
-  font-weight: 600;
-  color: #2a5030;
-  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: #002E20;
+  margin: 0;
+`
+
+export const InfoIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  color: #002E20;
+  cursor: pointer;
+`
+
+export const ContentWrapper = styled.div`
+  position: relative;
 `
 
 export const ContentRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  position: relative;
+  gap: 0.3rem;
 `
 
 export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
+  color: #004D39;
 `
 
-export const Text = styled.span`
-  font-size: 0.9rem;
-  color: #002e20;
+export const TextContainer = styled.span`
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #004D39;
+`
+
+export const TextValue = styled.span`
+  font-size: 2.3rem;
+  font-weight: 600;
   cursor: default;
 `
 
-// Tooltip container, oculto por padrão
-export const Tooltip = styled.div`
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  transform: translateY(-0.5rem);
-  background: #ffffff;
-  border: 1px solid #c8e6c9;
-  border-radius: 4px;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  color: #2a5030;
-  white-space: nowrap;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+export const TextUnit = styled.span`
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: default;
 `
 
-// Quando o usuário passar o mouse sobre a ContentRow, exibe o tooltip
-export const ContentWrapper = styled.div`
-  position: relative;
+// ========== TOGGLE ==========
 
-  &:hover ${Tooltip} {
-    opacity: 1;
-    visibility: visible;
-  }
+export const ToggleContainer = styled.div`
+  width: 5rem;
+  height: 1.6rem;
+  background: #A6E09B;
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  margin-left: auto;
+`
+
+export const ToggleOption = styled.div<{ active?: boolean }>`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: ${({ active }) => (active ? '#FFFFFF' : '#002E20')};
+  z-index: 2;
+`
+
+export const ToggleSlider = styled.div<{ active: boolean }>`
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 4px);
+  height: calc(100% - 4px);
+  background: #004D39;
+  border-radius: 100px;
+  transition: transform 0.2s ease;
+
+  ${({ active }) =>
+    active
+      ? css`
+          transform: translateX(110%);
+        `
+      : css`
+          transform: translateX(0);
+        `}
 `

@@ -1,4 +1,3 @@
-// src/components/Dashboard/Dashboard.tsx
 import React, { useState, useEffect } from 'react'
 import { IconSunFilled, IconMoonFilled } from '@tabler/icons-react'
 import {
@@ -66,8 +65,8 @@ const Dashboard: React.FC = () => {
       </Header>
 
       <CardsContainer>
-        <CardsColumn width="20%">
-            <ReusedWaterCard value="30 mL"/>
+        <CardsColumn width="25%">
+            <ReusedWaterCard absoluteValue={30} percentValue={20}/>
             <GenericCard/>
             <GenericCard/>
             <GenericCard/>

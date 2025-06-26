@@ -1,44 +1,64 @@
-import React from 'react'
-import { IconDroplet } from '@tabler/icons-react'
+import React, { useState } from 'react'
+import { IconRefresh, IconInfoCircle } from '@tabler/icons-react'
 import {
   CardContainer,
+  TitleRow,
   Title,
+  InfoIconWrapper,
+  ContentWrapper,
   ContentRow,
   IconWrapper,
-  Text,
-  Tooltip,
-  ContentWrapper
+  TextContainer,
+  TextValue,
+  TextUnit,
+  ToggleContainer,
+  ToggleOption,
+  ToggleSlider
 } from './styles'
+import Tooltip from '../../../../components/Tooltip'
+import { DefaultTooltipMessages } from '../../../../components/Tooltip/messages'
 
-interface ReusedWaterCardProps {
-  /** Quantidade reutilizada, ex: "30 mL" ou "45 %" */
-  value: string
-  /** Texto exibido no tooltip */
-  tooltipText?: string
+export interface ReusedWaterCardProps {
+  absoluteValue: number
+  percentValue: number
 }
 
-/**
- * Card de água reutilizada.
- * Exibe título, ícone, valor e tooltip de informação.
- */
 const ReusedWaterCard: React.FC<ReusedWaterCardProps> = ({
-  value,
-  tooltipText = 'Reutilização de água em relação ao total utilizado'
+  absoluteValue,
+  percentValue,
 }) => {
+  const [showPercent, setShowPercent] = useState(false)
+  const displayValue = showPercent ? percentValue : absoluteValue
+  const displayUnit = showPercent ? '%' : 'mL'
+
   return (
     <CardContainer>
-      <Title>Água reutilizada</Title>
+      <TitleRow>
+        <Title>Água recuperada</Title>
+        <Tooltip text={DefaultTooltipMessages.reusedWater}>
+          <InfoIconWrapper>
+            <IconInfoCircle size={18} />
+          </InfoIconWrapper>
+        </Tooltip>
+      </TitleRow>
 
       <ContentWrapper>
         <ContentRow>
           <IconWrapper>
-            <IconDroplet size={20} color="#2a5030" />
+            <IconRefresh size={25} stroke={2} />
           </IconWrapper>
 
-          <Text>{value}</Text>
-        </ContentRow>
+          <TextContainer>
+            <TextValue>{displayValue}</TextValue>
+            <TextUnit>{displayUnit}</TextUnit>
+          </TextContainer>
 
-        <Tooltip>{tooltipText}</Tooltip>
+          <ToggleContainer onClick={() => setShowPercent((p) => !p)}>
+            <ToggleSlider active={showPercent} />
+            <ToggleOption active={!showPercent}>mL</ToggleOption>
+            <ToggleOption active={showPercent}>%</ToggleOption>
+          </ToggleContainer>
+        </ContentRow>
       </ContentWrapper>
     </CardContainer>
   )
