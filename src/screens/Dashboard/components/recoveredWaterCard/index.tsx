@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import { IconRefresh, IconInfoCircle } from '@tabler/icons-react'
+import React, { useState } from 'react';
+import { IconRefresh, IconInfoCircle } from '@tabler/icons-react';
+import Tooltip from '../../../../components/Tooltip';
+import { DefaultTooltipMessages } from '../../../../components/Tooltip/messages';
 import {
   CardContainer,
   TitleRow,
@@ -10,26 +12,22 @@ import {
   IconWrapper,
   TextContainer,
   TextValue,
-  TextUnit,
-  ToggleContainer,
-  ToggleOption,
-  ToggleSlider
-} from './styles'
-import Tooltip from '../../../../components/Tooltip'
-import { DefaultTooltipMessages } from '../../../../components/Tooltip/messages'
+  TextUnit
+} from './styles';
+import Toggle from '../../../../components/ToggleButton';
 
 export interface RecoveredWaterCardProps {
-  absoluteValue: number
-  percentValue: number
+  absoluteValue: number;
+  percentValue: number;
 }
 
 const RecoveredWaterCard: React.FC<RecoveredWaterCardProps> = ({
   absoluteValue,
   percentValue,
 }) => {
-  const [showPercent, setShowPercent] = useState(false)
-  const displayValue = showPercent ? percentValue : absoluteValue
-  const displayUnit = showPercent ? '%' : 'mL'
+  const [showPercent, setShowPercent] = useState<0 | 1>(0);
+  const displayValue = showPercent === 1 ? percentValue : absoluteValue;
+  const displayUnit = showPercent === 1 ? '%' : 'mL';
 
   return (
     <CardContainer>
@@ -53,15 +51,15 @@ const RecoveredWaterCard: React.FC<RecoveredWaterCardProps> = ({
             <TextUnit>{displayUnit}</TextUnit>
           </TextContainer>
 
-          <ToggleContainer onClick={() => setShowPercent((p) => !p)}>
-            <ToggleSlider active={showPercent} />
-            <ToggleOption active={!showPercent}>mL</ToggleOption>
-            <ToggleOption active={showPercent}>%</ToggleOption>
-          </ToggleContainer>
+          <Toggle
+            labels={['mL', '%']}
+            initialActiveIndex={0}
+            onChange={(idx) => setShowPercent(idx)}
+          />
         </ContentRow>
       </ContentWrapper>
     </CardContainer>
-  )
-}
+  );
+};
 
-export default RecoveredWaterCard
+export default RecoveredWaterCard;

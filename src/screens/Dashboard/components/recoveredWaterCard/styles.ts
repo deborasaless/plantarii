@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   border-radius: 10px;
@@ -65,49 +65,4 @@ export const TextUnit = styled.span`
   font-size: 1.2rem;
   font-weight: 600;
   cursor: default;
-`
-
-// ========== TOGGLE ==========
-
-export const ToggleContainer = styled.div`
-  width: 5rem;
-  height: 1.6rem;
-  background: #A6E09B;
-  border-radius: 100px;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  margin-left: auto;
-`
-
-export const ToggleOption = styled.div<{ active?: boolean }>`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: ${({ active }) => (active ? '#FFFFFF' : '#002E20')};
-  z-index: 2;
-`
-
-export const ToggleSlider = styled.div<{ active: boolean }>`
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: calc(50% - 4px);
-  height: calc(100% - 4px);
-  background: #004D39;
-  border-radius: 100px;
-  transition: transform 0.2s ease;
-
-  ${({ active }) =>
-    active
-      ? css`
-          transform: translateX(110%);
-        `
-      : css`
-          transform: translateX(0);
-        `}
 `
