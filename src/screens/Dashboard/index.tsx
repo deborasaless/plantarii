@@ -14,9 +14,12 @@ import {
   CardsContainer,
   GenericCard
 } from './styles';
-import { tankLevelLow, tankLevelNormal, type TankLevelData } from '../../mocks/tankLevelCardMock';
+import { tankLevelLow, tankLevelNormal } from '../../mocks/tankLevelCardMock';
 import RecoveredWaterCard from './components/recoveredWaterCard';
 import TankLevelCard from './components/tankLevelCard';
+import WateringCard from './components/wateringCard';
+import { wateringMock } from '../../mocks/wateringCardMock';
+import { recoveredWaterMock } from '../../mocks/recoveredWaterCardMock';
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date());
@@ -46,9 +49,6 @@ const Dashboard: React.FC = () => {
   const hour = now.getHours();
   const isDay = hour >= 5 && hour < 18;
 
-  // Simulando resposta da API com o mock
-  const tankData: TankLevelData = tankLevelLow;
-
   return (
     <Container>
       <Header>
@@ -72,9 +72,9 @@ const Dashboard: React.FC = () => {
 
       <CardsContainer>
         <CardsColumn width="25%">
-          <RecoveredWaterCard absoluteValue={30} percentValue={20} />
-          <TankLevelCard data={tankData} />
-          <GenericCard />
+          <RecoveredWaterCard data={recoveredWaterMock} />
+          <TankLevelCard data={tankLevelLow} />
+          <WateringCard data={wateringMock} />
           <GenericCard />
         </CardsColumn>
 

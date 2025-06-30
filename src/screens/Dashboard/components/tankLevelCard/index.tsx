@@ -47,7 +47,7 @@ const TankLevelCard: React.FC<TankLevelCardProps> = ({ data }) => {
 
       <TitleRow>
         <Title>Nível do tanque</Title>
-        <Tooltip text={DefaultTooltipMessages.tankLevel}>
+        <Tooltip text={DefaultTooltipMessages.tankLevelCard}>
           <InfoIconWrapper>
             <IconInfoCircle size={18} />
           </InfoIconWrapper>

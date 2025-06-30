@@ -14,26 +14,25 @@ import {
   TextValue,
   TextUnit
 } from './styles';
+import type { RecoveredWaterCardData } from '../../../../mocks/recoveredWaterCardMock';
 import Toggle from '../../../../components/ToggleButton';
 
 export interface RecoveredWaterCardProps {
-  absoluteValue: number;
-  percentValue: number;
+  data: RecoveredWaterCardData;
 }
 
 const RecoveredWaterCard: React.FC<RecoveredWaterCardProps> = ({
-  absoluteValue,
-  percentValue,
+  data: { absoluteValue, percentValue },
 }) => {
   const [showPercent, setShowPercent] = useState<0 | 1>(0);
   const displayValue = showPercent === 1 ? percentValue : absoluteValue;
-  const displayUnit = showPercent === 1 ? '%' : 'mL';
+  const displayUnit  = showPercent === 1 ? '%'          : 'mL';
 
   return (
     <CardContainer>
       <TitleRow>
         <Title>Água recuperada</Title>
-        <Tooltip text={DefaultTooltipMessages.recoveredWater}>
+        <Tooltip text={DefaultTooltipMessages.recoveredWaterCard}>
           <InfoIconWrapper>
             <IconInfoCircle size={18} />
           </InfoIconWrapper>
