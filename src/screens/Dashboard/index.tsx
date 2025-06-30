@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { IconSunFilled, IconMoonFilled } from '@tabler/icons-react'
+import React, { useState, useEffect } from 'react';
+import { IconSunFilled, IconMoonFilled } from '@tabler/icons-react';
+
 import {
   Container,
   Header,
@@ -12,35 +13,41 @@ import {
   CardsColumn,
   CardsContainer,
   GenericCard
-} from './styles'
-import RecoveredWaterCard from './components/recoveredWaterCard'
+} from './styles';
+import { tankLevelLow, tankLevelNormal, type TankLevelData } from '../../mocks/tankLevelCardMock';
+import RecoveredWaterCard from './components/recoveredWaterCard';
+import TankLevelCard from './components/tankLevelCard';
 
 const Dashboard: React.FC = () => {
-  const [now, setNow] = useState(new Date())
+  const [now, setNow] = useState(new Date());
 
   // Atualiza o relógio a cada segundo
   useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 1_000)
-    return () => clearInterval(timer)
-  }, [])
+    const timer = setInterval(() => setNow(new Date()), 1_000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Formata data em pt-BR
   const formattedDate = now.toLocaleDateString('pt-BR', {
     weekday: 'long',
     day: 'numeric',
     month: 'long'
-  })
-  const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
+  });
+  const capitalizedDate =
+    formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
   // Formata hora
   const formattedTime = now.toLocaleTimeString('pt-BR', {
     hour: '2-digit',
     minute: '2-digit'
-  })
+  });
 
   // Sol de 05:00 até 17:59; Lua de 18:00 até 04:59
-  const hour = now.getHours()
-  const isDay = hour >= 5 && hour < 18
+  const hour = now.getHours();
+  const isDay = hour >= 5 && hour < 18;
+
+  // Simulando resposta da API com o mock
+  const tankData: TankLevelData = tankLevelLow;
 
   return (
     <Container>
@@ -58,7 +65,6 @@ const Dashboard: React.FC = () => {
             ) : (
               <IconMoonFilled size={15} color="#085BEA" />
             )}
-
             {formattedTime}
           </TimeRow>
         </DateTime>
@@ -66,23 +72,23 @@ const Dashboard: React.FC = () => {
 
       <CardsContainer>
         <CardsColumn width="25%">
-            <RecoveredWaterCard absoluteValue={30} percentValue={20}/>
-            <GenericCard/>
-            <GenericCard/>
-            <GenericCard/>
+          <RecoveredWaterCard absoluteValue={30} percentValue={20} />
+          <TankLevelCard data={tankData} />
+          <GenericCard />
+          <GenericCard />
         </CardsColumn>
 
         <CardsColumn width="50%">
-            <GenericCard/>
+          <GenericCard />
         </CardsColumn>
 
         <CardsColumn width="30%">
-            <GenericCard/>
-            <GenericCard/>
+          <GenericCard />
+          <GenericCard />
         </CardsColumn>
       </CardsContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
