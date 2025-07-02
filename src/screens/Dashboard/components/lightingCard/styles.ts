@@ -14,7 +14,6 @@ export const CardContainer = styled.div`
 export const TitleRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.3rem;
   margin-bottom: 0.5rem;
   justify-content: space-between;
 `
@@ -45,15 +44,16 @@ export const ContentRow = styled.div`
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  height: fit-content;
-  justify-content: center;
+  height: 100px;
+  justify-content: space-between;
 `
 
 export const ClockSVGContainer = styled.svg.attrs({
-  viewBox: '6 6 90 90',
+  viewBox: '7 6 130 130',
+  
 })`
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
 `
 
 export const Slice = styled.path<{
@@ -61,23 +61,32 @@ export const Slice = styled.path<{
   hovered: boolean;
   editMode: boolean;
 }>`
-  fill: ${({ active }) => (active ? '#003423' : '#DDF1E1')};
-  cursor: ${({ editMode }) => (editMode ? 'pointer' : 'default')};
-  stroke: ${({ editMode, hovered }) =>
-    editMode && hovered ? '#F0464A' : 'none'};
-  stroke-width: ${({ editMode, hovered }) =>
-    editMode && hovered ? '1.5' : '0'};
-`;
+    fill: ${({ active }) => (active ? '#003423' : '#DDF1E1')};
+
+    cursor: ${({ editMode }) => (editMode ? 'pointer' : 'default')};
+
+    stroke: ${({ active }) => ( active ? '#003423' : '#DDF1E1')};
+    stroke-width: 1px;
+
+    /* só em hover, pinta de vermelho por cima */
+    ${({ editMode, hovered }) =>
+        editMode && hovered
+        ? `
+        stroke: #F0464A;
+        stroke-width: 1.5px;
+    `
+        : ''}
+    `;
 
 export const Outline = styled.circle`
   fill: none;
   stroke: #549665;
-  stroke-width: 2;
+  stroke-width: 2.5;
 `;
 
 export const Tick = styled.line<{ major: boolean }>`
   stroke: #549665;
-  stroke-width: ${({ major }) => (major ? 1.5 : 0.8)};
+  stroke-width: ${({ major }) => (major ? 1.5 : 1)};
 `;
 
 export const HourHand = styled.line`

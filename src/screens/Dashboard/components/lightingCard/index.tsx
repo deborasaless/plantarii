@@ -28,8 +28,8 @@ export interface LightingCardProps {
 }
 
 const HOURS = 24;
-const RADIUS = 32;
-const CENTER = 40;
+const RADIUS = 52;
+const CENTER = 65;
 
 function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
   const a = (angleDeg - 90) * (Math.PI / 180);
@@ -94,24 +94,24 @@ const LightingCard: React.FC<LightingCardProps> = ({ data }) => {
 
         <ContentRow>
             <ClockSVGContainer>
-              {Array.from({ length: HOURS }).map((_, i) => {
-                const sliceSize = 360 / HOURS;
-                const start = i * sliceSize;
-                const end = start + sliceSize;
-                const d = describeSlice(CENTER, CENTER, RADIUS, start, end);
-                return (
-                  <Slice
-                    key={i}
-                    d={d}
-                    active={active[i]}
-                    hovered={hoverIndex === i}
-                    editMode={editMode}
-                    onClick={() => toggleSlice(i)}
-                    onMouseEnter={() => editMode && setHoverIndex(i)}
-                    onMouseLeave={() => setHoverIndex(null)}
-                  />
-                );
-              })}
+                {Array.from({ length: HOURS }).map((_, i) => {
+                    const sliceSize = 360 / HOURS;
+                    const start = i * sliceSize;
+                    const end = start + sliceSize;
+                    const d = describeSlice(CENTER, CENTER, RADIUS, start, end);
+                    return (
+                    <Slice
+                        key={i}
+                        d={d}
+                        active={active[i]}
+                        hovered={hoverIndex === i}
+                        editMode={editMode}
+                        onClick={() => toggleSlice(i)}
+                        onMouseEnter={() => editMode && setHoverIndex(i)}
+                        onMouseLeave={() => setHoverIndex(null)}
+                    />
+                    );
+                })}
 
               <Outline cx={CENTER} cy={CENTER} r={RADIUS} />
 
@@ -121,7 +121,7 @@ const LightingCard: React.FC<LightingCardProps> = ({ data }) => {
                 const inner = polarToCartesian(
                   CENTER,
                   CENTER,
-                  RADIUS - (i % 6 === 0 ? 7 : 4),
+                  RADIUS - (i % 6 === 0 ? 11 : 7),
                   angle
                 );
                 return (
@@ -140,14 +140,14 @@ const LightingCard: React.FC<LightingCardProps> = ({ data }) => {
               <HourHand
                 x1={CENTER}
                 y1={CENTER}
-                x2={polarToCartesian(CENTER, CENTER, RADIUS * 0.5, hourAngle).x}
-                y2={polarToCartesian(CENTER, CENTER, RADIUS * 0.5, hourAngle).y}
+                x2={polarToCartesian(CENTER, CENTER, RADIUS * 0.45, hourAngle).x}
+                y2={polarToCartesian(CENTER, CENTER, RADIUS * 0.45, hourAngle).y}
               />
               <MinuteHand
                 x1={CENTER}
                 y1={CENTER}
-                x2={polarToCartesian(CENTER, CENTER, RADIUS * 0.8, minAngle).x}
-                y2={polarToCartesian(CENTER, CENTER, RADIUS * 0.8, minAngle).y}
+                x2={polarToCartesian(CENTER, CENTER, RADIUS * 0.65, minAngle).x}
+                y2={polarToCartesian(CENTER, CENTER, RADIUS * 0.65, minAngle).y}
               />
 
               <CenterDot cx={CENTER} cy={CENTER} r={2.5} />
