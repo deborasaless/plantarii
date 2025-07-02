@@ -65,7 +65,7 @@ export const CardsContainer = styled.div`
   flex-direction: row;
   gap: 0.6rem;
   width: 100%;
-  height: 90vh;
+  height: 81vh;
 `
 
 export const CardsColumn = styled.div<{ width?: string }>`

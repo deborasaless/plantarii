@@ -8,7 +8,7 @@ export const CardContainer = styled.div`
   padding: 0.8rem 1rem;
   box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.15);
   width: 100%;
-  height: 22%;
+  height: 21%;
 `
 
 export const TitleRow = styled.div`

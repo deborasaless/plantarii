@@ -20,6 +20,8 @@ import TankLevelCard from './components/tankLevelCard';
 import WateringCard from './components/wateringCard';
 import { wateringMock } from '../../mocks/wateringCardMock';
 import { recoveredWaterMock } from '../../mocks/recoveredWaterCardMock';
+import LightingCard from './components/lightingCard';
+import { lightingMock } from '../../mocks/lightingCardMock';
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date());
@@ -75,7 +77,7 @@ const Dashboard: React.FC = () => {
           <RecoveredWaterCard data={recoveredWaterMock} />
           <TankLevelCard data={tankLevelLow} />
           <WateringCard data={wateringMock} />
-          <GenericCard />
+          <LightingCard data={lightingMock} />
         </CardsColumn>
 
         <CardsColumn width="50%">

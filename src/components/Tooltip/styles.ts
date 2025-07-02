@@ -12,9 +12,9 @@ export const TooltipContainer = styled.div`
   font-weight: 500;
   color: #002E20;
   z-index: 1000;
-  max-width: 10rem;
+  max-width: 11rem;
   white-space: normal;
-  width: 10rem;
+  width: 10.5rem;
   box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.15);
 
   opacity: 0;

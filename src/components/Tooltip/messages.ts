@@ -2,4 +2,5 @@ export const DefaultTooltipMessages = {
   recoveredWaterCard: 'Água recuperada da rega em relação ao volume total utilizado em mL ou %',
   tankLevelCard: 'Nível do tanque atual em mL ou %',
   wateringCard: 'Tempo restante até a próxima rega',
+  lightingCard: 'Ciclos de iluminação diários. O ponteiro vermelho indica em qual ciclo a horta se encontra atualmente, e o texto mostra a duração.',
 }
