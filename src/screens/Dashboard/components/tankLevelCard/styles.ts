@@ -50,6 +50,12 @@ export const InfoIconWrapper = styled.div`
   align-items: center;
   color: #002E20;
   cursor: pointer;
+
+  transition: color 0.2s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `
 
 export const ContentWrapper = styled.div`

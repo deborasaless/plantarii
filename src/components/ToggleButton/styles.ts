@@ -10,6 +10,12 @@ export const ToggleContainer = styled.div`
   user-select: none;
   display: flex;
   margin-left: auto;
+  
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const ToggleOption = styled.div<{ active?: boolean }>`
@@ -31,7 +37,7 @@ export const ToggleSlider = styled.div<{ activeIndex: number }>`
   height: calc(100% - 4px);
   background: #004D39;
   border-radius: 100px;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
   ${({ activeIndex }) =>
     activeIndex === 0
       ? css`transform: translateX(0);`

@@ -15,6 +15,7 @@ import {
   Title,
   InfoIconWrapper,
   EditIconWrapper,
+  IconWrapper,
   ContentRow,
   TextContainer,
   TextTitle,
@@ -153,26 +154,36 @@ const LightingCard: React.FC<LightingCardProps> = ({ data }) => {
         <EditIconWrapper>
           {editMode ? (
             <>
-                <IconRotate
-                    size={24}
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => handleAction('restore')}
-                />
-
-                <IconCheck
-                    size={24}
-                    style={{ cursor: 'pointer', backgroundColor: '#B6E8BD', borderRadius: '6px' }}
+                <IconWrapper
+                    hoverColor="#004d38d6"
+                    scale={1.2}
+                    onClick={() => handleAction('restore')}>
+                        <IconRotate size={24} />
+                </IconWrapper>
+                
+                <IconWrapper
+                    hoverColor="#004d38d6"
+                    scale={1.2}
                     onClick={() => {
-                    if (hasChanges(active, backup)) {
-                        handleAction('save');
-                    } else {
-                        setEditMode(false);
-                    }
-                    }}
-                />
+                        if (hasChanges(active, backup)) {
+                            handleAction('save');
+                        } else {
+                            setEditMode(false);
+                        }
+                        }} >
+                        <IconCheck
+                            size={24}
+                            style={{ backgroundColor: '#B6E8BD', borderRadius: '6px' }}
+                        />
+                </IconWrapper>
             </>
           ) : (
-            <TbEdit size={24} style={{ cursor: 'pointer' }} onClick={enterEdit} />
+            <IconWrapper
+                hoverColor="#004d38d6"
+                scale={1.2}
+                onClick={enterEdit} >
+                    <TbEdit size={24} />
+            </IconWrapper>
           )}
         </EditIconWrapper>
       </TitleRow>
@@ -186,15 +197,27 @@ const LightingCard: React.FC<LightingCardProps> = ({ data }) => {
           </ConfirmMessage>
 
           <ButtonsContainer>
-            <Button bgColor="#F0464A" color="#FFFFFF" onClick={cancelConfirmed}>
+            <Button 
+                bgColor="#F0464A" 
+                color="#FFFFFF" 
+                hoverBorderColor="#BC2727"
+                onClick={cancelConfirmed}>
               Não
             </Button>
             
-            <Button bgColor="#DDF1E1" color="#002E20" onClick={keepEditing}>
+            <Button 
+            bgColor="#FBEF9E" 
+            color="#002E20"
+            hoverBorderColor="#EAB308"
+            onClick={keepEditing}>
               Voltar
             </Button>
 
-            <Button bgColor="#003423" color="#FFFFFF" onClick={runConfirmed}>
+            <Button 
+            bgColor="#B6E8BD" 
+            color="#002E20" 
+            hoverBorderColor="#2CA586"
+            onClick={runConfirmed}>
               Sim
             </Button>
 

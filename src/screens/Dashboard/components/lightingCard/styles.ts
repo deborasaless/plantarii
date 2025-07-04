@@ -32,6 +32,12 @@ export const InfoIconWrapper = styled.div`
   align-items: center;
   color: #002E20;
   cursor: pointer;
+
+  transition: color 0.2s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `
 
 export const EditIconWrapper = styled.div`
@@ -39,8 +45,24 @@ export const EditIconWrapper = styled.div`
   align-items: center;
   color: #004D39;
   gap: 8px;
-  cursor: pointer;
 `
+
+export const IconWrapper = styled.div<{
+  hoverColor?: string;
+  scale?: number;
+}>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.2s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(${({ scale }) => scale ?? 1.1});
+    color: ${({ hoverColor }) => hoverColor ?? 'red'};
+  }
+`;
 
 export const ContentRow = styled.div`
   display: flex;
@@ -194,7 +216,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5%;
+  gap: 8%;
 `;
 
 export const Button = styled.button<{
@@ -203,18 +225,24 @@ export const Button = styled.button<{
     padding?: string;
     fontSize?: string;
     fontWeight?: string;
+    hoverBorderColor?: string;
     }>`
-  padding: ${({ padding }) => padding ?? '0.5rem 1rem'};
-  border: none;
+  padding: ${({ padding }) => padding ?? '0.3rem 1rem'};
   border-radius: 6px;
   cursor: pointer;
-  font-weight: ${({ fontWeight }) => fontWeight ?? '500'};
-  font-size: ${({ fontSize }) => fontSize ?? '0.7rem'};
+  border: 1px solid transparent;
+  font-weight: ${({ fontWeight }) => fontWeight ?? '600'};
+  font-size: ${({ fontSize }) => fontSize ?? '0.8rem'};
   background-color: ${({ bgColor }) => bgColor ?? '#DDF1E1'};
   color: ${({ color }) => color ?? '#002E20'};
   width: 100%;
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.3s ease, border-color 0.4s ease;
 
   &:hover {
-    opacity: 0.9;
+    transform: scale(1.10);
+    border-color: ${({ hoverBorderColor }) => hoverBorderColor ?? '#F0464A'};
+    border: 1.5px solid ${({ hoverBorderColor }) => hoverBorderColor ?? '#F0464A'};
   }
 `;
