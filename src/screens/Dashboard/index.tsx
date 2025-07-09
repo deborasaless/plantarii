@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { IconSunFilled, IconMoonFilled } from '@tabler/icons-react';
-
 import {
   Container,
   Header,
@@ -25,6 +24,7 @@ import { lightingMock } from '../../mocks/lightingCardMock';
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date());
+  const [isClockHovered, setIsClockHovered] = useState(false);
 
   // Atualiza o relógio a cada segundo
   useEffect(() => {
@@ -72,12 +72,27 @@ const Dashboard: React.FC = () => {
         </DateTime>
       </Header>
 
+      {isClockHovered && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.4)',
+          backdropFilter: 'blur(3px)',
+          pointerEvents: 'none',
+          zIndex: 900
+        }} />
+      )}
+
       <CardsContainer>
         <CardsColumn width="25%">
           <RecoveredWaterCard data={recoveredWaterMock} />
           <TankLevelCard data={tankLevelLow} />
           <WateringCard data={wateringMock} />
-          <LightingCard data={lightingMock} />
+          <LightingCard 
+            data={lightingMock} 
+            onClockHoverStart={() => setIsClockHovered(true)} 
+            onClockHoverEnd={() => setIsClockHovered(false)} 
+          />
         </CardsColumn>
 
         <CardsColumn width="50%">

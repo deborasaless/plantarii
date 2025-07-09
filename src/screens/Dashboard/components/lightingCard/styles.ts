@@ -67,17 +67,36 @@ export const IconWrapper = styled.div<{
 export const ContentRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 0;
   height: 100px;
   justify-content: space-between;
   padding-right: 4%;
 `
 
+export const LeftContainer = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 43%;
+  height: 100%;
+  gap: 3%;
+`
+
 export const ClockSVGContainer = styled.svg.attrs({
-  viewBox: '7 -2 130 133',
+  viewBox: '0 0 100 100',
+  preserveAspectRatio: 'xMidYMid meet'
 })`
-  width: 130px;
-  height: 130px;
+  position: relative;
+  z-index: 1001;
+  width: 110px;
+  height: 110px;
+
+  transition: transform 0.2s ease;
+  transform-origin: bottom left;
+
+  &:hover {
+    transform: scale(2.50);
+  }
 `
 
 export const Slice = styled.path<{
@@ -108,7 +127,7 @@ export const Outline = styled.circle`
 `;
 
 export const Tick = styled.line<{ major: boolean }>`
-  stroke: #549665;
+  stroke: ${({ major }) => (major ? '#008FB2' : '#549665')};
   stroke-width: ${({ major }) => (major ? 2 : 1.4)};
 `;
 
@@ -127,6 +146,16 @@ export const MinuteHand = styled.line`
 export const CenterDot = styled.circle`
   fill: #014634;
 `;
+
+export const RightContainer = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 57%;
+  height: 100%;
+  gap: 5%;
+`
 
 export const TextContainer = styled.span`
   display: flex;
@@ -153,14 +182,42 @@ export const TextValue = styled.span`
   cursor: default;
 `
 
+export const LegendContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LegendItem = styled.div<{ dotColor: string }>`
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  &::before {
+    content: '';
+    display: flex;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: ${({ dotColor }) => dotColor};
+    border-radius: 50%;
+  }
+
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: #002E20;
+`;
+
 //MODO DE EDIÇÃO ========================================================
 
 export const EditContainer = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
-  gap: 20px;
+  justify-content: center;
+  width: 75%;
+  gap: 10px;
+  height: 100%;
 `
 
 export const CiclesContainer = styled.span`
@@ -168,31 +225,128 @@ export const CiclesContainer = styled.span`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 5px;
   background-color: #DDF1E1;
   box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.15);
   border-radius: 7px;
-  max-width: 84%;
-  padding: 5% 6%;
+  width: 100%;
+  padding: 6% 6%;
 `
 
-export const CiclesNumber = styled.span`
+export const CycleControls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: fit-content;
+`;
+
+export const CounterButton = styled.button`
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #004D39;
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.10);
+  }
+`;
+
+export const CycleInput = styled.input`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   height: 30px;
-`
+  width: 45px;
+  border: none;
+  background-color: transparent;
+  color: #004D39;
+
+  /* Chrome, Edge, Safari */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #004D39;
+  }
+`;
 
 export const CiclesText = styled.span`
   text-align: center;
   font-size: 0.65rem;
   font-weight: 500;
   line-height: 1.4;
-`
+  color: #002E20;
+`;
+
+export const ButtonsContainer2 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  gap: 0.4rem;
+`;
+
+export const DistributeButton = styled.button<{
+    padding?: string;
+    fontWeight?: string;
+    hoverBorderColor?: string;
+    }>`
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #004D39;
+  width: fit-content;
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #DDF1E1;
+  padding: 0.3rem 0.4rem;
+  border-radius: 4px;
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.10);
+    border-color: ${({ hoverBorderColor }) => hoverBorderColor ?? '#004D39'};
+    border: 1.5px solid ${({ hoverBorderColor }) => hoverBorderColor ?? '#004D39'};
+  }
+`;
+
+export const SwitchButton = styled.button`
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  color: #004D39;
+  background-color: #DDF1E1;
+  border-radius: 4px;
+  padding: 0.02rem 0.02rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.10);
+    border-color: #004D39;
+    border: 1.5px solid #004D39;
+  }
+`;
 
 //MODO DE CONFIRMAÇÃO ====================================================
 
