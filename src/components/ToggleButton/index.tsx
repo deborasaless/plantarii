@@ -8,19 +8,27 @@ import {
 export interface ToggleProps {
   labels: [string, string];
   initialActiveIndex?: 0 | 1;
+  activeIndex?: 0 | 1;
   onChange?: (activeIndex: 0 | 1) => void;
 }
 
 const Toggle: React.FC<ToggleProps> = ({
   labels,
   initialActiveIndex = 0,
+  activeIndex: activeIndexProp,
   onChange
 }) => {
-  const [activeIndex, setActiveIndex] = React.useState<0 | 1>(initialActiveIndex);
+  const isControlled = activeIndexProp !== undefined;
+  const [internalIndex, setInternalIndex] = React.useState<0 | 1>(initialActiveIndex);
+  const activeIndex = isControlled ? activeIndexProp! : internalIndex;
 
   const handleClick = () => {
     const next = activeIndex === 0 ? 1 : 0;
-    setActiveIndex(next);
+  
+    if (!isControlled) {
+      setInternalIndex(next);
+    }
+
     onChange?.(next);
   };
 

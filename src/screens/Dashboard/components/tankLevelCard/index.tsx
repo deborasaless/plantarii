@@ -17,15 +17,10 @@ import {
   TextUses
 } from './styles';
 import Toggle from '../../../../components/ToggleButton';
-
-export interface TankLevelData {
-  absoluteValue: number;
-  percentValue: number;
-  isLow: boolean;
-}
+import type { TankLevelCardData } from '../../../../mocks/tankLevelCardMock';
 
 export interface TankLevelCardProps {
-  data: TankLevelData;
+  data: TankLevelCardData;
 }
 
 const TankLevelCard: React.FC<TankLevelCardProps> = ({ data }) => {
@@ -75,8 +70,6 @@ const TankLevelCard: React.FC<TankLevelCardProps> = ({ data }) => {
         <TextUses>
           5 dias restantes
         </TextUses>
-
-
 
       </ContentWrapper>
     </CardContainer>

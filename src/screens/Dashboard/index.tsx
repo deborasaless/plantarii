@@ -21,6 +21,8 @@ import { wateringMock } from '../../mocks/wateringCardMock';
 import { recoveredWaterMock } from '../../mocks/recoveredWaterCardMock';
 import LightingCard from './components/lightingCard';
 import { lightingMock } from '../../mocks/lightingCardMock';
+import CameraCard from './components/cameraCard';
+import { cameraMock } from '../../mocks/cameraCardMock';
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date());
@@ -96,7 +98,7 @@ const Dashboard: React.FC = () => {
         </CardsColumn>
 
         <CardsColumn width="50%">
-          <GenericCard />
+          <CameraCard data={cameraMock} />
         </CardsColumn>
 
         <CardsColumn width="30%">
