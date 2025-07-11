@@ -59,8 +59,8 @@ export const IconWrapper = styled.div<{
   transition: color 0.2s ease, transform 0.3s ease;
 
   &:hover {
-    transform: scale(${({ scale }) => scale ?? 1.1});
-    color: ${({ hoverColor }) => hoverColor ?? 'red'};
+    transform: scale(${({ scale }) => scale ?? 1.2});
+    color: ${({ hoverColor }) => hoverColor ?? '#004d38d6'};
   }
 `;
 
@@ -229,7 +229,7 @@ export const CiclesContainer = styled.span`
   gap: 5px;
   background-color: #DDF1E1;
   box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.15);
-  border-radius: 7px;
+  border-radius: 8px;
   width: 100%;
   padding: 6% 6%;
 `
@@ -312,10 +312,10 @@ export const DistributeButton = styled.button<{
   font-size: 0.8rem;
   color: #004D39;
   width: fit-content;
-  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
   background-color: #DDF1E1;
   padding: 0.3rem 0.4rem;
-  border-radius: 4px;
+  border-radius: 6px;
 
   transition: transform 0.2s ease, border-color 0.2s ease;
 
@@ -333,12 +333,12 @@ export const SwitchButton = styled.button`
   cursor: pointer;
   color: #004D39;
   background-color: #DDF1E1;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 0.02rem 0.02rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
 
   transition: transform 0.2s ease, border-color 0.2s ease;
 

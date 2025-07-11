@@ -190,7 +190,7 @@ const LightingCard: React.FC<LightingCardProps> = ({
   return (
     <CardContainer>
       <TitleRow>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
           <Title>Iluminação</Title>
           <Tooltip text={DefaultTooltipMessages.lightingCard}>
             <InfoIconWrapper><IconInfoCircle size={18} /></InfoIconWrapper>

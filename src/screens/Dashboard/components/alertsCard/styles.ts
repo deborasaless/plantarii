@@ -14,7 +14,7 @@ export const CardContainer = styled.div`
 export const TitleRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
 `
 
@@ -36,11 +36,36 @@ export const InfoIconWrapper = styled.div`
   &:hover { transform: scale(1.2); }
 `
 
+export const ClearButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #B6E8BD;
+  border-radius: 6px;
+  gap: 0.3rem;
+  height: 24px;
+  padding: 0 0.5rem;
+  border: none;
+  color: #002E20;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: color 0.2s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    color: #004d38d6;
+  }
+`;
+
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   gap: 0.4rem;
+  border-radius: 10px;
 
   /* Firefox */
   scrollbar-width: thin;
@@ -61,11 +86,25 @@ export const ContentWrapper = styled.div`
   }
 `
 
-export const AlertRow = styled.div<{ type: 'info' | 'warning' | 'danger' }>`
+export const DateHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0.25rem 0 0.25rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #004D39;
+`;
+
+export const AlertRow = styled.div<{
+  type: 'info' | 'warning' | 'danger';
+  removing?: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: start;
-  width: 98%;
+  width: 315px;
   height: fit-content;
   gap: 1%;
   padding: 0.3rem 0.5rem;
@@ -73,6 +112,15 @@ export const AlertRow = styled.div<{ type: 'info' | 'warning' | 'danger' }>`
   font-size: 0.75rem;
   font-weight: 500;
   color: #002E20;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+
+  ${({ removing }) =>
+    removing &&
+    `
+    transform: translateX(100%);
+    opacity: 0;
+  `}
 
   ${({ type }) => type === 'info' && css`
     background: #D9E7FF;
@@ -94,7 +142,6 @@ export const AlertIconWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-
 
 export const AlertTime = styled.span`
   font-variant-numeric: tabular-nums;
