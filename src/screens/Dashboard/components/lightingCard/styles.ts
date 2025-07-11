@@ -127,8 +127,9 @@ export const Outline = styled.circle`
 `;
 
 export const Tick = styled.line<{ major: boolean }>`
-  stroke: ${({ major }) => (major ? '#008FB2' : '#549665')};
+  stroke: ${({ major }) => (major ? '#085BEA' : '#549665')};
   stroke-width: ${({ major }) => (major ? 2 : 1.4)};
+  stroke-linecap: round;
 `;
 
 export const HourHand = styled.line`

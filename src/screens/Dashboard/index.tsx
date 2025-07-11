@@ -23,6 +23,8 @@ import LightingCard from './components/lightingCard';
 import { lightingMock } from '../../mocks/lightingCardMock';
 import CameraCard from './components/cameraCard';
 import { cameraMock } from '../../mocks/cameraCardMock';
+import AlertsCard from './components/alertsCard';
+import { alertsMock } from '../../mocks/alertsCardMock';
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date());
@@ -102,7 +104,7 @@ const Dashboard: React.FC = () => {
         </CardsColumn>
 
         <CardsColumn width="30%">
-          <GenericCard />
+          <AlertsCard data={alertsMock} />
           <GenericCard />
         </CardsColumn>
       </CardsContainer>
