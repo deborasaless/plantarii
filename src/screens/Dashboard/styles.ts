@@ -71,9 +71,9 @@ export const CardsContainer = styled.div`
 export const CardsColumn = styled.div<{ width?: string }>`
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
   justify-content: space-between;
   height: 100%;
+  max-height: 100%;
   width: ${({ width }) => width ?? 'auto'};
 `
 

@@ -55,7 +55,7 @@ export const IconWrapper = styled.div<{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: inherit;
+  color: #002E20;
   transition: color 0.2s ease, transform 0.3s ease;
 
   &:hover {

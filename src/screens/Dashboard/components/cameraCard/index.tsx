@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { IconInfoCircle, IconCircleFilled, IconBulbFilled, IconDropletsFilled } from '@tabler/icons-react';
+import ReactDOM from 'react-dom';
+import { IconInfoCircle, IconCircleFilled, IconBulbFilled, IconDropletsFilled, IconX } from '@tabler/icons-react';
 import Tooltip from '../../../../components/Tooltip';
 import { DefaultTooltipMessages } from '../../../../components/Tooltip/messages';
 import Toggle from '../../../../components/ToggleButton';
@@ -13,7 +14,10 @@ import {
   CameraImage,
   ControlContainer,
   Countdown,
-  ControlLabel
+  ControlLabel,
+  FullscreenOverlay,
+  FullscreenImage,
+  FullscreenClose
 } from './styles';
 import type { CameraCardData } from '../../../../mocks/cameraCardMock';
 import { wateringMock } from '../../../../mocks/wateringCardMock';
@@ -35,6 +39,7 @@ const CameraCard: React.FC<CameraCardProps> = ({
   const [lights, setLights] = useState(lightsOn);
   const [sprinklers, setSprinklers] = useState(initialSprinklersOn);
   const [countdown, setCountdown] = useState<number>(wateringTime);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   
   useEffect(() => {
     if (!sprinklers) {
@@ -54,6 +59,11 @@ const CameraCard: React.FC<CameraCardProps> = ({
     return () => clearInterval(timer);
   }, [sprinklers, wateringTime]);
 
+  useEffect(() => {
+    document.body.style.overflow = isFullscreen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isFullscreen]);
+
   return (
     <CardContainer>
       <TitleRow>
@@ -66,7 +76,7 @@ const CameraCard: React.FC<CameraCardProps> = ({
 
       <ContentWrapper>
         <ControlsRow>
-          
+
           {/* Luzes */}
           <ControlContainer width='85%'>
             <IconBulbFilled size={23} color='#EAB308' />
@@ -96,9 +106,27 @@ const CameraCard: React.FC<CameraCardProps> = ({
         </ControlsRow>
 
         <CameraImage>
-          <img src={cameraSrc} alt="Live camera feed" />
+          <img 
+            src={cameraSrc} 
+            alt="Live camera feed"
+            onClick={() => setIsFullscreen(true)}
+          />
         </CameraImage>
       </ContentWrapper>
+
+      {isFullscreen && ReactDOM.createPortal(
+        <FullscreenOverlay onClick={() => setIsFullscreen(false)}>
+          <FullscreenClose onAbort={() => setIsFullscreen(false)}>
+            <IconX size={35} style={{ backgroundColor: '#B6E8BD', borderRadius: '6px', color: '#004D39' }} />
+          </FullscreenClose>
+
+          <FullscreenImage
+            src={cameraSrc}
+            alt="Live camera feed fullscreen"
+          />
+        </FullscreenOverlay>,
+        document.body
+      )}
     </CardContainer>
   );
 };

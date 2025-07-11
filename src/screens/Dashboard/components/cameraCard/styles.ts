@@ -101,5 +101,36 @@ export const CameraImage = styled.div`
     transform: translate(-50%, -50%);
     object-fit: cover;
     border-radius: 15px;
+    cursor: pointer;
   }
 `
+
+export const FullscreenOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+`;
+
+export const FullscreenImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: default;
+`;
+
+export const FullscreenClose = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  color: #FFFFFF;
+  z-index: 1001;
+`;

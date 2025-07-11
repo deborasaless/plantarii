@@ -11,7 +11,7 @@ export const TooltipContainer = styled.div`
   font-size: 0.7rem;
   font-weight: 500;
   color: #002E20;
-  z-index: 1000;
+  z-index: 1400;
   max-width: 11rem;
   white-space: normal;
   width: 10.5rem;
