@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 export const CardContainer = styled.div`
   border-radius: 10px;
@@ -62,10 +62,23 @@ export const ClearButton = styled.button`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow-x: visible;
+  height: 84%;
+  border-radius: 10px;
+`
+
+export const ScrollArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 0 8px;
+  margin: 0 -8px;
   gap: 0.4rem;
-  border-radius: 10px;
+  padding-bottom: 5px;
+  user-select: none;
 
   /* Firefox */
   scrollbar-width: thin;
@@ -84,7 +97,7 @@ export const ContentWrapper = styled.div`
     border-radius: 4px;
     border: none;
   }
-`
+`;
 
 export const DateHeader = styled.div`
   display: flex;
@@ -97,9 +110,18 @@ export const DateHeader = styled.div`
   color: #004D39;
 `;
 
+const shakeAndScale = keyframes`
+  0%   { transform: scale(1.04) translateX(0); }
+  25%  { transform: scale(1.04) translateX(-2px); }
+  50%  { transform: scale(1.04) translateX(2px); }
+  75%  { transform: scale(1.04) translateX(-2px); }
+  100% { transform: scale(1.04) translateX(0); }
+`;
+
 export const AlertRow = styled.div<{
   type: 'info' | 'warning' | 'danger';
   removing?: boolean;
+  shaking?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -112,15 +134,44 @@ export const AlertRow = styled.div<{
   font-size: 0.75rem;
   font-weight: 500;
   color: #002E20;
+  cursor: pointer;
+  position: relative;
+  z-index: ${({ shaking }) => (shaking ? 2 : 1)};
 
   transition: transform 0.4s ease, opacity 0.4s ease;
 
   ${({ removing }) =>
     removing &&
-    `
-    transform: translateX(100%);
-    opacity: 0;
+    css`
+      transform: translateX(100%);
+      opacity: 0;
   `}
+
+  ${({ shaking }) =>
+    shaking &&
+    css`
+      animation: ${shakeAndScale} 0.3s linear infinite;
+  `}
+
+  &:hover {
+    ${({ removing, shaking }) =>
+      !removing && 
+      !shaking &&
+      css`
+        transform: scale(1.04);
+        z-index: 1;
+    `}
+  }
+
+  &:active {
+    ${({ removing, shaking }) =>
+      !removing &&
+      !shaking &&
+      css`
+        transform: scale(1.04);
+        z-index: 3;
+      `}
+  }
 
   ${({ type }) => type === 'info' && css`
     background: #D9E7FF;

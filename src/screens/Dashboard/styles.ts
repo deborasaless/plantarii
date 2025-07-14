@@ -8,9 +8,9 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
+  cursor: default;
 `
 
-/** Header contendo logo, título e data/hora */
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -25,14 +25,12 @@ export const TitleGroup = styled.div`
   gap: 0.25rem;
 `
 
-/** Logo */
 export const Logo = styled.img`
   width: 55px;
   height: 55px;
   object-fit: contain;
 `
 
-/** Título plantarii */
 export const Title = styled.h1`
   font-size: 28px;
   font-weight: 600;
