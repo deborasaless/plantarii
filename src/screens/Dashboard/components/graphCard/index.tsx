@@ -239,7 +239,7 @@ export const GraphCard: React.FC = () => {
       <ContentWrapper>
         <SummaryRow>
           {/* TOTAL */}
-          <SummaryItem positive={summary.totalChange >= 0} width='120px'>
+          <SummaryItem positive={summary.totalChange >= 0} >
             <span className="label">Total</span>
 
             <Metrics>
