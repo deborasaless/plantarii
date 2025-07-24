@@ -190,6 +190,10 @@ export const GraphCard: React.FC = () => {
         type: 'bar',
         data: s.values,
         itemStyle: { color: s.color },
+        cursor: 'default',
+        emphasis: {
+          itemStyle: { cursor: 'default' },
+        },
         
         barWidth: barWidthPercent,
         barGap: idx === 0 ? '0%' : '-100%',
