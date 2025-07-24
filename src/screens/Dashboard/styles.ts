@@ -74,11 +74,3 @@ export const CardsColumn = styled.div<{ width?: string }>`
   max-height: 100%;
   width: ${({ width }) => width ?? 'auto'};
 `
-
-export const GenericCard = styled.div`
-  height: 50px;
-  flex: 1;
-  width: 100%;
-  background: black;
-  border-radius: 8px;
-`

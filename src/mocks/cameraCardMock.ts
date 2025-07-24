@@ -7,5 +7,5 @@ export interface CameraCardData {
 export const cameraMock: CameraCardData = {
   lightsOn: true,
   sprinklersOn: false,
-  cameraSrc: 'pipitin_toto.jpg',  // troque pelo src real ou URL de teste
+  cameraSrc: 'https://192.168.3.233/',  // troque pelo src real ou URL de teste
 };

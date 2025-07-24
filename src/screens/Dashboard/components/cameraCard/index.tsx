@@ -67,7 +67,7 @@ const CameraCard: React.FC<CameraCardProps> = ({
   return (
     <CardContainer>
       <TitleRow>
-        <IconCircleFilled size={20} color='#F0464A' />
+        <IconCircleFilled size={16} color='#F0464A' />
         <Title>Ao vivo</Title>
         <Tooltip text={DefaultTooltipMessages.cameraCard}>
           <InfoIconWrapper><IconInfoCircle size={18} /></InfoIconWrapper>

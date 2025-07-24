@@ -11,7 +11,6 @@ import {
   Logo,
   CardsColumn,
   CardsContainer,
-  GenericCard
 } from './styles';
 import { tankLevelLow, tankLevelNormal } from '../../mocks/tankLevelCardMock';
 import RecoveredWaterCard from './components/recoveredWaterCard';
@@ -25,6 +24,7 @@ import CameraCard from './components/cameraCard';
 import { cameraMock } from '../../mocks/cameraCardMock';
 import AlertsCard from './components/alertsCard';
 import { alertsMock } from '../../mocks/alertsCardMock';
+import GraphCard from './components/graphCard';
 
 const Dashboard: React.FC = () => {
   const [now, setNow] = useState(new Date());
@@ -105,7 +105,7 @@ const Dashboard: React.FC = () => {
 
         <CardsColumn width="30%">
           <AlertsCard data={alertsMock} />
-          <GenericCard />
+          <GraphCard />
         </CardsColumn>
       </CardsContainer>
     </Container>
