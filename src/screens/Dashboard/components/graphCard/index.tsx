@@ -248,8 +248,7 @@ export const GraphCard: React.FC = () => {
 
             <Metrics>
               <div className="valueGroup">
-                <span className="valueNumber">{totalValue} </span>
-                <span className="valueUnit">{totalUnit} </span>
+                <span className="valueNumberUnit">{totalValue} {totalUnit} </span>
               </div>
 
               {/* seta + %  (só UM bloco!) */}
@@ -269,8 +268,7 @@ export const GraphCard: React.FC = () => {
 
             <Metrics>
               <div className="valueGroup">
-                <span className="valueNumber">{summary.reusedPercent}</span>
-                <span className="valueUnit">%</span>
+                <span className="valueNumber">{summary.reusedPercent} % </span>
               </div>
 
               <ChangeGroup positive={summary.reusedChange >= 0}>
@@ -289,8 +287,7 @@ export const GraphCard: React.FC = () => {
 
             <Metrics>
               <div className="valueGroup">
-                <span className="valueNumber">{summary.consumedPercent}</span>
-                <span className="valueUnit">%</span>
+                <span className="valueNumber">{summary.consumedPercent} % </span>
               </div>
 
               <ChangeGroup positive={summary.consumedChange >= 0}>
