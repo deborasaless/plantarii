@@ -188,6 +188,7 @@ export const LegendContainer = styled.div`
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
+  user-select: none;
 `;
 
 export const LegendItem = styled.div<{ dotColor: string }>`

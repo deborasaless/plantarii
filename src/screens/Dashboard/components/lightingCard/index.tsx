@@ -267,11 +267,17 @@ const LightingCard: React.FC<LightingCardProps> = ({
                 const slice = 360 / HOURS;
                 const d = describeSlice(CENTER, CENTER, RADIUS, i * slice, i * slice + slice);
                 return (
-                    <Slice key={i} d={d}
-                    active={active[i]} hovered={hoverIndex === i} editMode={editMode}
-                    onClick={() => toggleSlice(i)}
-                    onMouseEnter={() => editMode && setHoverIndex(i)}
-                    onMouseLeave={() => setHoverIndex(null)}
+                    <Slice 
+                      key={i} 
+                      d={d}
+                      active={active[i]}
+                      hovered={hoverIndex === i}
+                      editMode={editMode}
+                      onClick={() => {
+                        if (editMode) toggleSlice(i);
+                      }}
+                      onMouseEnter={() => editMode && setHoverIndex(i)}
+                      onMouseLeave={() => setHoverIndex(null)}
                     />
                 );
                 })}
